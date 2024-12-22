@@ -1,0 +1,81 @@
+
+
+<section class="content-wrap flex-c top-space" style="margin-bottom:60px;">
+    <div class="container row-x1 flex-sb" style="transform: none;">
+        <main class="main-wrap" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+
+            <div class="pbtStickySidebar"
+                style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;">
+                <div class="main section" id="main" name="Latest Posts">
+                    <div class="widget Blog index-blog flex-col" data-version="2" id="Blog1">
+                       <h1 class="h2 mt-2 mb-2 text-center">{{blog.fr_title}}</h1>
+                        <div class="content-body">
+                            <div>
+                                <img src="/images/{{blog.post_photo}}" width="100%" height="auto" alt="">
+                
+                            </div>
+                            {{{blog.fr_body}}}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+        <aside class="sidebar-wrap"
+            style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+
+            <div class="pbtStickySidebar"
+                style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;">
+                <div class="sidebar pbt-s section" id="sidebar" name="Sidebar">
+                    <div class="widget PopularPosts" data-version="2" id="PopularPosts1">
+                        <div class="title-wrap widget-title">
+                            <h3 class="title">Latest Articles</h3>
+                        </div>
+                        <div class="widget-content">
+                            <div class="popular-items">
+                                <div class="popular-list">
+                                    {{#each latest_posts}}
+                                    {{>fr_blog_lat}}
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget Label" data-version="2" id="Label1">
+                        <div class="title-wrap widget-title">
+                            <h3 class="title">Main Tags</h3>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="cloud-style">
+                                {{#each categories}}
+                                <li><a class="label-name text-capitalize"
+                                        href="/fr/articles/catégorie/{{this.fr_slug}}">
+                                        {{this.fr_name}}<b class="ml-2">({{this.posts}})</b>
+                                        </a>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>
+
+<section class="flex-c bottom-space">
+    <div class="featured container row-x1 section" id="featured" name="Featured Posts">
+        <div class="title-wrap blog1-title">
+            <h3 class="title">Popular Articles</h3><a class="title-link" href="/search">View all</a>
+        </div>
+        <div class="widget PopularPosts" data-version="2" id="PopularPosts2">
+            <div class="widget-content">
+                <div class="featured-items">
+                    {{#each popular_posts}}
+                    {{>fr_blog_top}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,13 +1,9 @@
 const express = require('express')
 const router = express.Router();
 
-const mainController = require("../controllers/mainController");
 const authController = require("../controllers/authController");
+const mainController = require("../controllers/mainController");
 const checker = require("../middleware/authMiddleware");
-
-///Page Routes
-router.get("/", mainController.home);
-router.get("/about", mainController.about);
 
 ///Auth routers
 router.get("/login",checker.sessionChecker, authController.loginForm);

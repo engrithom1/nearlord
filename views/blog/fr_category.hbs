@@ -1,0 +1,87 @@
+<section class="main-image page-title-area bg-image" data-bg-image="/images/{{cat_info.thumb}}"
+    style="background-image: url(&quot;/images/{{cat_info.thumb}}&quot;); background-repeat: no-repeat;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="page-title">{{cat_info.fr_name}}</h1>
+                <ul class="breadcrumb">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-wrap flex-c" style="margin-bottom:60px;">
+    <div class="container row-x1 flex-sb" style="transform: none;">
+        <main class="main-wrap" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+
+            <div class="pbtStickySidebar"
+                style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;">
+                <div class="main section" id="main" name="Latest Posts">
+                    <div class="widget Blog index-blog flex-col" data-version="2" id="Blog1">
+                        <div class="title-wrap blog1-title">
+                            <h3 class="title">Popular Articles</h3><a class="title-link" href="/search">View all</a>
+                        </div>
+                        <div class="blog-posts index-post-wrap list-items">
+                            {{#each popular_posts}}
+                            {{>fr_blog_pop}}
+                            {{/each}}
+                        </div>
+                        <div class="blog-pager">
+                            <a class="load-more btn visible"
+                                data-url="https://seoflex-pbt.blogspot.com/search?updated-max=2022-04-12T11:34:00-07:00&amp;max-results=8"
+                                href="#" id="load-more">
+                                Load More
+                            </a>
+                        </div>
+
+                        <div class="content-body mt-5">
+                            {{{cat_info.fr_body}}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <aside class="sidebar-wrap"
+            style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+
+            <div class="pbtStickySidebar"
+                style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;">
+                <div class="sidebar pbt-s section" id="sidebar" name="Sidebar">
+                    <div class="widget PopularPosts" data-version="2" id="PopularPosts1">
+                        <div class="title-wrap widget-title">
+                            <h3 class="title">Latest Articles</h3>
+                        </div>
+                        <div class="widget-content">
+                            <div class="popular-items">
+                                <div class="popular-list">
+                                    {{#each latest_posts}}
+                                    {{>fr_blog_lat}}
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget Label" data-version="2" id="Label1">
+                        <div class="title-wrap widget-title">
+                            <h3 class="title">Main Tags</h3>
+                        </div>
+                        <div class="widget-content">
+                            <ul class="cloud-style">
+                                {{#each categories}}
+                               <li><a class="label-name text-capitalize"
+                                        href="/fr/articles/categorie/{{this.fr_slug}}">
+                                        {{this.fr_name}}<b class="ml-2">({{this.posts}})</b>
+                                        </a>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>
+

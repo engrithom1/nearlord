@@ -1,0 +1,54 @@
+<section class="content-wrap flex-c top-space" style="margin-bottom:60px;">
+    <div class="container row-x1 flex-sb" style="transform: none;">
+        <main class="main-wrap" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+
+            <div class="pbtStickySidebar"
+                style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;">
+                <div class="main section" id="main" name="Latest Posts">
+                    <div class="widget Blog index-blog flex-col" data-version="2" id="Blog1">
+                        <span>
+                            <h1 class="h2 mt-2 mb-2">Bible </h1>
+                            <p>(New International Version)</p>
+                        </span>
+
+                        <div class="content-body">
+                            <h4 class="mb-3">Old Testament</h4>
+                            <div class="row">
+                                {{#each bible_ot}}
+                                <div class="col-6 col-sm-4 col-md-3 book-item">
+                                    <a class="book-link" href="/bible/{{this.slug}}">{{this.book}}</a>
+                                </div>
+                                {{/each}}
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+        <aside class="sidebar-wrap"
+            style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+
+            <div class="pbtStickySidebar"
+                style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;">
+                <div class="sidebar pbt-s section" id="sidebar" name="Sidebar">
+                    <div class="widget PopularPosts" data-version="2" id="PopularPosts1">
+                        <div class="title-wrap widget-title">
+                            <h3 class="title">Popular Articles</h3>
+                        </div>
+                        <div class="widget-content">
+                            <div class="popular-items">
+                                <div class="popular-list">
+                                    {{#each popular_posts}}
+                                    {{>blog_lat}}
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>

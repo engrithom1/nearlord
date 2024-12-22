@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
-const expressLayout = require('express-ejs-layouts');
+const exphbs = require("express-handlebars");
 const cookieParser = require('cookie-parser');
 const session = require('express-session')
 const bodyParser = require("body-parser");
@@ -11,7 +11,7 @@ var moment = require("moment");
 var path = require("path");
 
 const app = express();
-const PORT = 4000 || process.env.PORT;
+const PORT = 1991 || process.env.PORT;
 
 ///allow data to be sent by submit form
 app.use(express.urlencoded({extended:true}));
@@ -39,9 +39,54 @@ app.use(express.static(path.join(__dirname, "/uploads")));
 app.use(express.static(path.join(__dirname, "/node_modules")));
 
 //template Engine
-app.use(expressLayout);
-app.set('layout','./layouts/main');
-app.set('view engine', 'ejs');
+const handlebars = exphbs.create({
+  extname: ".hbs",
+  helpers: {
+    substr: function (len, context) {
+      if (context.length > len) {
+        return context.substring(0, len) + "...";
+      } else {
+        return context;
+      }
+    },
+    subdate: function (context) {
+      //var context = context.toString()
+      return moment(context).format("DD - MMMM - YYYY");
+    },
+    if_function: function (v1, v2) {
+      if (v1 == v2) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    if_student_has_data: function (sl, re) {
+      if (sl > 0 && re <= 2) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    index_of: function (arr, ind) {
+      return arr[ind]
+    },
+    if_student_has_not_data: function (sl, re) {
+      if (sl == 0 && re < 3) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    minus: function (v1, v2) {
+        return (v1 - v2)
+    },
+    price: function (price) {
+      return price.toLocaleString();
+    },
+  },
+});
+app.engine(".hbs", handlebars.engine);
+app.set("view engine", ".hbs");
 ////set cookies
 app.use((req, res, next) => {
     var cookie_data = req.cookies.new_forum_user;
@@ -50,8 +95,8 @@ app.use((req, res, next) => {
       req.session.user = { isLoged: false, user: {} };
     }
   
-    console.log("defore cokies");
-    console.log(req.session.user);
+    //console.log("defore cokies");
+    //console.log(req.session.user);
   
     if (cookie_data) {
       req.session.user = cookie_data;
@@ -64,21 +109,25 @@ app.use((req, res, next) => {
   });
   
 //routs issues
+//routs issues
 app.use('/', require('./server/routes/main'));
-app.use('/blog', require('./server/routes/blog'));
+app.use('/', require('./server/routes/en'));
+app.use('/sp', require('./server/routes/sp'));
+app.use('/fr', require('./server/routes/fr'));
 
 ///check if page not exist
-/*app.use(function (req, res, next) {
+app.use(function (req, res, next) {
     res.status(404);
     // respond with html page
     if (req.accepts("html")) {
-      res.render("404", { url: req.url });
+      //res.render("404", { url: req.url });
+       res.redirect('/404');
       return;
     }
-  });*/
+  });
 
   
-app.listen(PORT, ()=>{
+  app.listen(PORT, ()=>{
     console.log(`NearLord is now Running on Port ${PORT}`);
 });
 //app.listen();

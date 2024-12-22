@@ -1,0 +1,626 @@
+/*=============== GOOGLE FONTS ===============
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+/*fonts goes here
+@font-face {
+  font-family: 'DancingScript';
+  src: url('../fonts/DancingScript-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-Regular.ttf');
+}
+
+=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3rem;
+
+  /*========== Colors ==========*/
+  --hue: 174;
+  --sat: 63%;
+  --first-color: hsl(var(--hue), var(--sat), 40%);
+  --first-color-alt: hsl(var(--hue), var(--sat), 36%);
+  --title-color: hsl(var(--hue), 12%, 15%);
+  --text-color: hsl(var(--hue), 8%, 35%);
+  --body-color: hsl(var(--hue), 100%, 99%);
+  --container-color: #FFF;
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Montserrat';
+  --h1-font-size: 1.5rem;
+  --normal-font-size: .938rem;
+  --tiny-font-size: .625rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 968px) {
+  :root {
+    --h1-font-size: 2.25rem;
+    --normal-font-size: 1rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #FBFBF9;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  /*background-color: #fff !important;
+    #f2f6fc*/
+  color: #333;
+}
+
+.btn-secondary {
+  background-color: #142948 !important;
+}
+
+.bg-secondary {
+  background-color: #4D96FF !important;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+
+.section__title {
+  font-size: var(--h1-font-size);
+  color: #142948;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.section__height {
+  height: 100vh;
+}
+
+.t-slide {
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+/*=============== LAYOUT ===============
+.container {
+  max-width: 968px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+=============== HEADER ===============*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /*background-color: #4D96FF;*/
+  z-index: var(--z-fixed);
+  transition: .4s;
+}
+
+/*=============== NAV ===============*/
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.nav__img {
+  width: 32px;
+  border-radius: 50%;
+  margin-left: 15%;
+}
+
+.nav__img__icon {
+  width: 22px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0%;
+}
+
+
+.nav__img__icon_2 {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  margin: 0%;
+}
+
+.logo__img {
+  width: 32px;
+  border-radius: 50%;
+  margin-left: 3%;
+}
+
+.nav__logo {
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.nav__logo:hover {
+  text-decoration: none;
+  color: #fff !important;
+}
+
+.video-play-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border-radius: 50%;
+  width: 50px;
+  padding-left: 0px;
+  background-color: #FFF;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .nav__link:hover {
+    color: #142948 !important;
+    text-decoration: none !important;
+  }
+
+  .nav__link {
+    margin-top: 10px;
+  }
+
+  .main-body {
+    margin-top: 40px !important;
+    margin-bottom: 100px;
+  }
+
+  .nav__logo {
+    color: #fff !important;
+    margin: 10px;
+
+  }
+
+  .nav {
+    height: 0px;
+  }
+
+  .desk__menu {
+    display: none;
+  }
+
+  .mob_item {
+    margin: 0px 10px
+  }
+
+
+}
+
+@media screen and (max-width: 767px) {
+  .nav__menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #4D96FF;
+    /*box-shadow: 0 2px 4px 8px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);*/
+    width: 100%;
+    height: 55px;
+    /*padding: 0 1rem;*/
+    display: grid;
+    align-content: center;
+    border-radius: 1rem 1rem 0 0;
+    transition: .4s;
+  }
+  
+  .header_content {
+    height: 60px;
+  }
+
+
+}
+
+.main-body {
+  margin-top: 120px;
+  margin-bottom: 100px;
+}
+
+.nav__list,
+.nav__link {
+  display: flex;
+}
+
+.nav__link {
+  flex-direction: column;
+  align-items: center;
+  row-gap: 4px;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.nav__list {
+  justify-content: space-around;
+}
+
+.nav__name {
+  font-size: var(--tiny-font-size);
+  /* display: none;*/
+  /* Minimalist design, hidden labels */
+}
+
+.nav__icon {
+  font-size: 20px;
+}
+
+/*Active link*/
+.active-link {
+  position: relative;
+  color: #142948 !important;
+  transition: .3s;
+}
+
+/* Minimalist design, active link */
+/* .active-link::before{
+  content: '';
+  position: absolute;
+  bottom: -.5rem;
+  width: 4px;
+  height: 4px;
+  background-color: var(--first-color);
+  border-radius: 50%;
+} */
+
+/* Change background header */
+.scroll-header {
+  box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+}
+
+/*=============== MEDIA QUERIES ===============*/
+/* For small devices */
+/* Remove if you choose, the minimalist design */
+@media screen and (max-width: 320px) {
+  .nav__name {
+    display: none;
+  }
+
+  .nav__logo {
+    display: none;
+  }
+
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px) {
+  .nav__list {
+    justify-content: center;
+    column-gap: 3rem;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  body {
+    margin: 0;
+  }
+
+  .section {
+    padding: 7rem 0 2rem;
+  }
+
+  .nav {
+    display: none;
+    /*height: 60px;
+     4.5rem */
+  }
+
+  .nav__img {
+    display: none;
+  }
+
+  .nav__icon {
+    display: none;
+  }
+
+  .nav__menu {
+    display: none;
+  }
+
+  .mob_menu {
+    display: none
+  }
+
+  .nav__name {
+    font-size: var(--normal-font-size);
+    /* display: block; */
+    /* Minimalist design, visible labels */
+  }
+
+  .nav__link:hover {
+    color: #142948 !important;
+    text-decoration: none !important;
+  }
+
+  /* First design, remove if you choose the minimalist design */
+  .active-link::before {
+    content: '';
+    position: absolute;
+    bottom: -.75rem;
+    width: 4px;
+    height: 4px;
+    background-color: var(--first-color);
+    border-radius: 50%;
+  }
+
+  /* Minimalist design */
+  /* .active-link::before{
+      bottom: -.75rem;
+  } */
+}
+
+/* For large devices */
+@media screen and (min-width: 1024px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/*single pages css*/
+.content-section {
+  background-color: #fff;
+  border-radius: 15px;
+  height: auto;
+  /*border:2px solid #919ba9;*/
+  box-shadow: rgb(0 0 0 / 5%) 0px 0px 5px 1px;
+  padding: 15px;
+}
+
+.content-bottom {
+  justify-content: left !important;
+  margin: 10px 0;
+}
+
+.play-list {
+  display: flex;
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 24px 0px;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.play-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  box-shadow: rgb(0 0 0 / 30%) 0px 0px 24px 0px;
+  border-radius: 50%;
+  color: #4D96FF;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.play-list:hover .play-icon {
+  color: #fff;
+  background-color: #4D96FF;
+}
+
+.play-icon .fa-play {
+  margin-left: 20px;
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.item-info {
+  width: 90%;
+}
+
+.item-title {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.label-title {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+button {
+  border: 0px !important;
+}
+
+video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  position: relative;
+}
+
+/**comments
+starts hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee */
+
+
+.comment {
+  width: 100%;
+  height: auto;
+}
+
+.btn-secondary {
+  background-color: #4D96FF;
+}
+
+.addtxt {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 13px;
+  width: 100%;
+  font-weight: 500;
+  border-top: 0px;
+  border-bottom: 2px #4D96FF solid;
+  border-left: 2px #4D96FF solid;
+  border-right: 2px #4D96FF solid;
+}
+
+.form-control:focus {
+  color: #000;
+  border-top: 0px;
+}
+
+.second {
+  width: 100%;
+  background-color: white;
+  border-radius: 4px;
+  /*box-shadow: 10px 10px 5px #aaaaaa;*/
+}
+
+.dd_second {
+  width: 100%;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px #aaaaaa;
+  margin-right: 10px;
+}
+
+.text1 {
+  font-size: 14px;
+  font-weight: 500 !important;
+  color: #000;
+  padding: 0px 20px;
+}
+
+.text2 {
+  font-size: 13px;
+  font-weight: 500;
+  margin-left: 6px;
+  color: #56575b;
+}
+
+.text3 {
+  font-size: 13px;
+  font-weight: 500;
+  margin-right: 4px;
+  color: #828386;
+}
+
+.text3o {
+  color:
+    #4D96FF;
+}
+
+.text4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #828386;
+}
+
+.text4i {
+  color: #4D96FF;
+}
+
+.text4o {
+  color: white;
+}
+
+.thumbup {
+  font-size: 13px;
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+.btn-liked {
+  color: #4D96FF;
+  padding: 0px;
+}
+
+.btn-liked:hover {
+  color: #4D96FF;
+  padding: 0px;
+}
+
+.btn-like {
+  color: #828386;
+  padding: 0px;
+}
+
+.btn-like:hover {
+  color: #828386;
+  padding: 0px;
+}
+
+.dd-btn-liked {
+  color: #4D96FF;
+  padding: 0px;
+}
+
+.dd-btn-liked:hover {
+  color: #4D96FF;
+  padding: 0px;
+}
+
+.dd-btn-like {
+  color: #828386;
+  padding: 0px;
+}
+
+.dd-btn-like:hover {
+  color: #828386;
+  padding: 0px;
+}
+
+/*here
+endssssssssssssssssssssssssssssssssssssssssssssss*/
+@media only screen and (max-width: 767px) {
+  .content-section {
+    border-radius: 8px;
+    /*border:2px solid
+#919ba9;*/
+    box-shadow: rgb(0 0 0 / 5%) 0px 0px 5px 1px;
+    padding: 8px;
+    margin: 8px;
+  }
+
+  .item-title {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .label-title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .item-info {
+    width: 80%;
+  }
+}
+
+.description {
+  font-size: 17px;
+}
+
+.btn-height {
+  height: fit-content;
+  position: relative;
+  bottom: 0px
+}
